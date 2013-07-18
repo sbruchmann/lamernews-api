@@ -1,7 +1,7 @@
 {
   "name": "lamernews-api",
   "description": "Query the Lamernews API from Node.js",
-  "version": "0.1.0",
+  "version": "0.1.1",
   "keywords": ["lamernews", "api"],
   "license": "MIT",
   "repository": {
