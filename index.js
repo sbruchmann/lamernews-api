@@ -3,7 +3,7 @@
 var _ = require("lodash");
 var HTTP_STATUS_CODES = require("http").STATUS_CODES;
 var request = require("request");
-var path = require("path");
+var url = require("url");
 
 function LamernewsAPI(root) {
     this.root = root;
@@ -32,13 +32,11 @@ LamernewsAPI.prototype.getNews = function getNews(options, callback) {
 };
 
 LamernewsAPI.prototype.query = function query(signature, callback) {
-    var url = path.normalize(this.root + signature);
-
     if (!this.root) {
         throw new Error("No API root specified");
     }
 
-    request(url, function(err, res, body) {
+    request(url.resolve(this.root, signature), function(err, res, body) {
         var status;
 
         if (err) {
