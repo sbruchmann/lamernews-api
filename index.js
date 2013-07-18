@@ -24,7 +24,7 @@ LamernewsAPI.prototype.getNews = function getNews(options, callback) {
     }
 
     options = _.defaults(options || {}, defaults);
-    signature = ["getnews", options.type, options.count, options.start];
+    signature = ["getnews", options.type, options.start, options.count];
 
     this.query(signature.join("/"), callback);
 
