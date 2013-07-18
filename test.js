@@ -8,7 +8,7 @@ var LamernewsAPI = rewire("./");
 
 LamernewsAPI.__set__("request", function requestMock(url, callback) {
     var res = {
-        status: 200
+        statusCode: 200
     };
 
     callback(null, res, JSON.stringify({

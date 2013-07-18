@@ -43,7 +43,7 @@ LamernewsAPI.prototype.query = function query(signature, callback) {
             return callback(err);
         }
 
-        status = res.status;
+        status = res.statusCode;
 
         if (status !== 200) {
             err = new Error(HTTP_STATUS_CODES[status]);
