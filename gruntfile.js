@@ -10,7 +10,7 @@ module.exports = function configure(grunt) {
             },
 
             target: {
-                src: ["index.js", "test.js"]
+                src: ["index.js", "request-mock.js", "test.js"]
             }
         },
 

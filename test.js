@@ -2,21 +2,12 @@
 
 // Module dependencies
 var expect = require("chai").expect;
+var requestMock = require("./request-mock.js");
 var rewire = require("rewire");
 
 var LamernewsAPI = rewire("./");
 
-LamernewsAPI.__set__("request", function requestMock(url, callback) {
-    var res = {
-        statusCode: 200
-    };
-
-    callback(null, res, JSON.stringify({
-        status: "ok",
-        count: 1337,
-        news: []
-    }));
-});
+LamernewsAPI.__set__("request", requestMock);
 
 describe("LamernewsAPI", function() {
     beforeEach(function() {
