@@ -15,7 +15,7 @@ describe("LamernewsAPI", function() {
     });
 
     describe("#getNews", function() {
-        it("asynchronously returns news", function(done) {
+        it("fetches news asynchronously", function(done) {
             this.api.getNews(function(err, response) {
                 if (err) {
                     throw err;
@@ -35,12 +35,12 @@ describe("LamernewsAPI", function() {
     });
 
     describe("#query", function() {
-        it("throws an error if no root is specified", function() {
+        it("throws an error if root was not specified", function() {
             this.api.root = null;
             expect(this.api.query).to.throw(Error);
         });
 
-        it("asynchronously returns the API response", function(done) {
+        it("queries the given API endpoint", function(done) {
             var signature = "/getnews/latest/0/30";
 
             this.api.query(signature, function onDone(err, response) {
