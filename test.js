@@ -14,14 +14,6 @@ describe("LamernewsAPI", function() {
         this.api = new LamernewsAPI("http://echojs.com/api/");
     });
 
-    it("has a 'getNews' method", function() {
-        expect(this.api).to.respondTo("getNews");
-    });
-
-    it("has a 'query' method", function() {
-        expect(this.api).to.respondTo("query");
-    });
-
     describe("#getNews", function() {
         it("asynchronously returns news", function(done) {
             this.api.getNews(function(err, response) {
