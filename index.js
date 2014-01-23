@@ -10,56 +10,58 @@ function LamernewsAPI(root) {
     return this;
 }
 
-LamernewsAPI.prototype.getNews = function getNews(options, callback) {
-    var defaults = {
-        count: 30,
-        start: 0,
-        type: "latest"
-    };
-    var signature;
+LamernewsAPI.prototype = {
+    getNews: function getNews(options, callback) {
+        var defaults = {
+            count: 30,
+            start: 0,
+            type: "latest"
+        };
+        var signature;
 
-    if (!callback && typeof options === "function") {
-        callback = options;
-        options = {};
+        if (!callback && typeof options === "function") {
+            callback = options;
+            options = {};
+        }
+
+        options = _.defaults(options || {}, defaults);
+        signature = ["getnews", options.type, options.start, options.count];
+
+        this.query(signature.join("/"), callback);
+
+        return this;
+    },
+
+    query: function query(signature, callback) {
+        if (!this.root) {
+            throw new Error("No API root specified");
+        }
+
+        request(url.resolve(this.root, signature), function(err, res, body) {
+            var status;
+
+            if (err) {
+                return callback(err);
+            }
+
+            status = res.statusCode;
+
+            if (status !== 200) {
+                err = new Error(HTTP_STATUS_CODES[status]);
+                err.code = status;
+
+                return callback(err);
+            }
+
+            try {
+                body = JSON.parse(body);
+            } catch (err) {
+                callback(err);
+            }
+
+            callback(null, body);
+        });
     }
-
-    options = _.defaults(options || {}, defaults);
-    signature = ["getnews", options.type, options.start, options.count];
-
-    this.query(signature.join("/"), callback);
-
-    return this;
-};
-
-LamernewsAPI.prototype.query = function query(signature, callback) {
-    if (!this.root) {
-        throw new Error("No API root specified");
-    }
-
-    request(url.resolve(this.root, signature), function(err, res, body) {
-        var status;
-
-        if (err) {
-            return callback(err);
-        }
-
-        status = res.statusCode;
-
-        if (status !== 200) {
-            err = new Error(HTTP_STATUS_CODES[status]);
-            err.code = status;
-
-            return callback(err);
-        }
-
-        try {
-            body = JSON.parse(body);
-        } catch (err) {
-            callback(err);
-        }
-
-        callback(null, body);
-    });
 };
 
 module.exports = LamernewsAPI;
