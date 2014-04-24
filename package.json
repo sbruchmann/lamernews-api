@@ -2,7 +2,10 @@
   "name": "lamernews-api",
   "description": "Query the Lamernews API from Node.js",
   "version": "0.1.3",
-  "keywords": ["lamernews", "api"],
+  "keywords": [
+    "lamernews",
+    "api"
+  ],
   "license": "MIT",
   "repository": {
     "type": "git",
@@ -12,16 +15,16 @@
     "test": "mocha --no-colors --reporter spec"
   },
   "dependencies": {
-    "lodash": "~1.3.1",
-    "request": "~2.22.0"
+    "lodash": "^1.3.1",
+    "request": "^2.22.0"
   },
   "devDependencies": {
-    "chai": "*",
-    "grunt": "~0.4.1",
-    "grunt-cafe-mocha": "~0.1.8",
-    "grunt-contrib-jshint": "~0.6.0",
-    "mocha": "*",
-    "rewire": "~1.1.3"
+    "chai": "^1.9.0",
+    "grunt": "^0.4.2",
+    "grunt-cafe-mocha": "^0.1.11",
+    "grunt-contrib-jshint": "^0.8.0",
+    "mocha": "^1.17.1",
+    "rewire": "^2.0.0"
   },
   "author": "Steffen Bruchmann <steffen.bruchmann@gmail.com> (http://sbruchmann.github.io)"
 }
