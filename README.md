@@ -1,6 +1,7 @@
 # lamernews-api
 
-[![Build Status](https://secure.travis-ci.org/sbruchmann/lamernews-api.png?branch=master)](http://travis-ci.org/user/lamernews-api)
+Discontinued. See [lamernews-client](https://github.com/bevacqua/lamernews-client)
+by [@bevacqua](https://github.com/bevacqua).
 
 
 ## Installation
